@@ -391,8 +391,8 @@ class TFGPT2MainLayer(tf.keras.layers.Layer):
             outputs = outputs + (all_hidden_states,)
         if cast_bool_to_primitive(output_attentions) is True:
             # let the number of heads free (-1) so we can extract attention even after head pruning
-            attention_output_shape = input_shape[:-1] + [-1] + shape_list(all_attentions[0])[-2:]
-            all_attentions = tuple(tf.reshape(t, attention_output_shape) for t in all_attentions)
+            # attention_output_shape = input_shape[:-1] + [-1] + shape_list(all_attentions[0])[-2:]
+            # all_attentions = tuple(tf.reshape(t, attention_output_shape) for t in all_attentions)
             outputs = outputs + (all_attentions,)
         return outputs  # last hidden state, presents, (all hidden_states), (attentions)
 
